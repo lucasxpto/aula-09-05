@@ -11,8 +11,17 @@ class _FormPageState extends State<FormPage> {
   TextEditingController _controladorNome = TextEditingController();
   TextEditingController _controladorCPF = TextEditingController();
 
+  void validarDados() {
+    if (_controladorNome.text.isNotEmpty && _controladorCPF.text.isNotEmpty) {
+      print('${_controladorNome.text} - ${_controladorCPF.text}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    // final largura = MediaQuery.of(context).size.width;
+    // final altura = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Column(
         children: [
@@ -36,6 +45,17 @@ class _FormPageState extends State<FormPage> {
               ),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(32, 15, 31, 10),
+            child: Container(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: validarDados,
+                child: Text('Enviar Cadastro'),
+              ),
+            ),
+          )
         ],
       ),
     );
